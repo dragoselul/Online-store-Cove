@@ -18,20 +18,24 @@ export default function Footer() {
   const color = useColorModeValue("gray.700", "gray.200");
 
   return (
-    <Box as="footer" bg={bg} color={color} py={8} mt={16} ml="-100px" >
+    <Box as="footer" bg={bg} color={color} py={8} mt={16} ml={{base:"0px", xl:"-80px"}}>
       <Flex
         maxW="5xl"
         mx="auto"
         px={4}
-        direction={{ base: "column", md: "row" }}
-        align="flex-start"
-        justify="space-between"
-      >
+        justifyContent="center"
+        alignItems="center">
+        <Stack
+          spacing={{ base: "10", lg: "60" }}
+          direction={{ base: "column", lg: "row" }}
+          textAlign={{ base: "center", lg: "left" }}
+          alignItems={{ base: "center", lg: "left" }}
+          >
         {/* Branding / Title */}
         <Stack
-          direction={{ base: "column" }}
-          spacing={4}
-          mt={{ base: 4, md: 0 }}
+          spacing={3}
+          mt={{ base: 4 }}
+          justifyContent={"center"}
         >
           <Link href="https://anpc.ro/" isExternal>
             <Image
@@ -56,7 +60,6 @@ export default function Footer() {
 
         {/* Navigation Links */}
         <Stack
-          direction={{ base: "column" }}
           spacing={4}
           mt={{ base: 4, md: 0 }}
         >
@@ -77,34 +80,34 @@ export default function Footer() {
 
         {/* Contact details */}
         <Stack
-          direction={{ base: "column" }}
           spacing={4}
           mt={{ base: 4, md: 0 }}
         >
-            <Text as="b">Detalii de contact</Text>
-            <Link href="https://twitter.com/yourhandle" isExternal>
+          <Text as="b">Detalii de contact</Text>
+          <Link href="https://twitter.com/yourhandle" isExternal>
             <Stack direction="row" align="center">
               <Icon as={FaPhone} boxSize={5} />
               <Text>+40 123 456 789</Text>
             </Stack>
           </Link>
           <Link href="https://github.com/yourhandle" isExternal>
-          <Stack direction="row" align="center">
-            <Icon as={FaEnvelope} boxSize={5} />
-            <Text>covestitiu@prost.ro</Text>
+            <Stack direction="row" align="center">
+              <Icon as={FaEnvelope} boxSize={5} />
+              <Text>covestitiu@prost.ro</Text>
             </Stack>
           </Link>
           <Link href="https://linkedin.com/in/yourprofile" isExternal>
-          <Stack direction="row" align="center">
-            <Icon as={FaInstagram} boxSize={5} />
-            <Text>bunanusuntcove</Text>
+            <Stack direction="row" align="center">
+              <Icon as={FaInstagram} boxSize={5} />
+              <Text>bunanusuntcove</Text>
             </Stack>
           </Link>
         </Stack>
+        </Stack>
       </Flex>
       <Text textAlign="center" fontSize="sm" mt={8}>
-          © {new Date().getFullYear()} KrakerShop. All rights reserved.
-        </Text>
+        © {new Date().getFullYear()} Covesitiu. All rights reserved.
+      </Text>
     </Box>
   );
 }
