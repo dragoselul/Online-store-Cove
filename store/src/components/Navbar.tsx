@@ -54,7 +54,6 @@ export default function Navbar() {
         {/* Desktop links */}
         <HStack as="nav" spacing={4} display={{ base: "none", md: "flex" }}>
           {Links.map((link) => (
-            // <NextLink key={link.href} href={link.href} passHref>
               <ChakraLink
                 key={link.href} href={link.href}
                 px={2}
@@ -64,7 +63,6 @@ export default function Navbar() {
               >
                 {link.label}
               </ChakraLink>
-            // </NextLink>
           ))}
         </HStack>
       </Flex>
