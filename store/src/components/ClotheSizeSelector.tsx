@@ -38,7 +38,7 @@ export default function ClotheSizeSelector() {
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: 'clothing-size',
     defaultValue: 'M',
-    onChange: console.log,
+    onChange: console.log, //TODO handle size change logic here
   })
 
   const group = getRootProps()
