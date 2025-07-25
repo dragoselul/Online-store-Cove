@@ -25,7 +25,7 @@ export default function AuthenticationForm({
     <form action={formAction} noValidate>
       <Stack spacing={4} maxW="md" mx="auto">
         {/* Email Field */}
-        <FormControl isRequired>
+        <FormControl isRequired isInvalid={state?.errors?.some(error => error.fieldName === "email")}>
           <FormLabel fontWeight="bold">Adresa de email</FormLabel>
           <Input name="email" type="email" />
           <FormHelperText>Exemplu: email@gmail.com</FormHelperText>
@@ -37,7 +37,7 @@ export default function AuthenticationForm({
         </FormControl>
 
         {/* Password Field */}
-        <FormControl isRequired>
+        <FormControl isRequired isInvalid={state?.errors?.some(error => error.fieldName === "password")}>
           <FormLabel fontWeight="bold">Parola</FormLabel>
           <Input name="password" type="password" />
           <FormHelperText>
@@ -53,7 +53,7 @@ export default function AuthenticationForm({
 
         {/* Confirm Password (only on signup) */}
         {isSignup && (
-          <FormControl isRequired>
+          <FormControl isRequired isInvalid={state?.errors?.some(error => error.fieldName === "confirmPassword")}>
             <FormLabel fontWeight="bold">Confirmă Parola</FormLabel>
             <Input name="confirmPassword" type="password" />
             {state?.errors?.map((error, index) => (

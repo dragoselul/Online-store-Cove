@@ -7,18 +7,16 @@ export async function signup(
 ): Promise<AuthenticationActionState> {
   const form = Object.fromEntries(formData)
   const validationResult = await signUpSchema.safeParseAsync(form)
-  
-  console.log("Signup validation hit");
+
   if (!validationResult.success) {
-    console.log({
-      form,
-      errors: validationResult.error.issues.map(issue => ({fieldName: issue.path[0].toString(), message: issue.message}))
-    })
     return {
       form,
       errors: validationResult.error.issues.map(issue => ({fieldName: issue.path[0].toString(), message: issue.message}))
     }
   }
+  //TODO handle user creation logic here
+  // When the backend is ready, replace this with actual user creation logic
+
   return {
     form,
     errors: undefined
@@ -38,6 +36,10 @@ export async function login(
       errors: validationResult.error.issues.map(issue => ({fieldName: issue.path[0].toString(), message: issue.message}))
     }
   }
+
+  //TODO handle user login logic here
+  // When the backend is ready, replace this with actual user login logic
+  
   return {
     form,
     errors: undefined
