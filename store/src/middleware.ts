@@ -7,7 +7,9 @@ console.log('[middleware] loaded!')
 export function middleware(req: NextRequest) {
   console.log('[middleware] hitting:', req.nextUrl.pathname)
   const token = req.cookies.get('jwt')?.value
-  console.log('[middleware] jwt token:', token)
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('[middleware] jwt token detected')
+  }
 
   if (req.nextUrl.pathname.startsWith('/account')
       && !req.nextUrl.pathname.includes('/authenticate')
