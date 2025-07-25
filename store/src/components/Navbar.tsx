@@ -41,7 +41,7 @@ export default function Navbar() {
               >
                 {link.label}
               </ChakraLink>
-            // </NextLink>
+            
           ))}
         </HStack>
         {/* Hamburger for mobile */}
@@ -71,7 +71,7 @@ export default function Navbar() {
         </Box>
         <HStack as="nav" spacing={4} display={{ base: "inherit", md: "flex" }}>
           {shoppingLinks.map((link) => (
-            // <NextLink key={link.href} href={link.href} passHref>
+            
               <ChakraLink as={NextLink}
                 key={link.href} href={link.href}
                 px={3}
