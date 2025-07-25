@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Providers } from './providers'
+import { Providers } from "./providers";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -28,10 +28,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Providers><Navbar />
+        <Providers>
+          <Navbar />
           {children}
-          <Footer/>
-          </Providers>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
