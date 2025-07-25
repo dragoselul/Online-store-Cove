@@ -1,7 +1,7 @@
 export interface Product {
   id: number;
   name: string;
-  description: string;
+  description: Map<string, string>;
   price: number;
-  images: string | null;
+  images: string[] | null;
 }

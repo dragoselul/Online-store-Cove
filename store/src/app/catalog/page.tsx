@@ -1,15 +1,16 @@
 import { Container, SimpleGrid, Link as ChakraLink } from "@chakra-ui/react";
 import styles from "../page.module.css";
-import ProductCard from "@/components/product-card";
+import ProductCard from "@/components/ProductCard";
 import { Product } from "@/model/product";
-import NextLink from "next/link";
 
 export default function Catalog() {
   const products: Product[] = [
     {
         id: 1,
         name: "Produs 1",
-        description: "Descriere produs 1",
+        description: new Map([
+          ["Overview", "Descriere produs 1"],
+        ]),
         price: 19.99,
         images: null,
     },
@@ -17,14 +18,18 @@ export default function Catalog() {
 
         id: 2,
         name: "Produs 2",
-        description: "Descriere produs 2",
+        description: new Map([
+          ["Overview", "Descriere produs 2"],
+        ]),
         price: 29.99,
         images: null,
     },
     {
         id: 3,
         name: "Produs 3",
-        description: "Descriere produs 3",
+        description: new Map([
+          ["Overview", "Descriere produs 3"],
+        ]),
         price: 39.99,
         images: null,
     },
@@ -32,21 +37,27 @@ export default function Catalog() {
 
         id: 4,
         name: "Produs 4",
-        description: "Descriere produs 4",
+        description: new Map([
+          ["Overview", "Descriere produs 4"],
+        ]),
         price: 49.99,
         images: null,
     },
     {
         id: 5,
         name: "Produs 5",
-        description: "Descriere produs 5",
+        description: new Map([
+          ["Overview", "Descriere produs 5"],
+        ]),
         price: 59.99,
         images: null,
     },
     {
         id: 6,
         name: "Produs 6",
-        description: "Descriere produs 6",
+        description: new Map([
+          ["Overview", "Descriere produs 6"],
+        ]),
         price: 69.99,
         images: null,
     },

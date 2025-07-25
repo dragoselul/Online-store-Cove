@@ -2,65 +2,71 @@ import { Product } from "@/model/product";
 import {
   Container,
   Text,
+  SimpleGrid,
   Stack,
-  Image,
-  Card,
-  CardBody,
   Divider,
-  CardFooter,
   Heading,
-  Link as ChakraLink,
   Box,
+  HStack,
 } from "@chakra-ui/react";
-import NextLink from "next/link";
-import styles from "../../page.module.css";
+import ImageCarousel from "@/components/ImageCarousel";
+import ProductDescription from "@/components/ProductDescription";
+import ClotheSizeSelector from "@/components/ClotheSizeSelector";
 
 export default async function ProductPage({
   params,
 }: {
-  params: Promise<{ productId: number }>;
+  params: { productId: string };
 }) {
-  // const res = await fetch(`https://plm.com/products/${params.product}`, {
-  //     next: { revalidate: 60 }
-  // });
-  // const product: Product = await res.json();
   const { productId } = await params;
-  const product: Product = {
-    id: productId,
+  // fetch your real product here…
+  const product: Product & { images: string[] } = {
+    id: Number(productId),
     name: `Product ${productId}`,
-    description: `Description for product ${productId}`,
-    price: 19.99 + productId,
-    images: null,
+    description: new Map([
+      ["Overview", `Description for product ${productId}`],
+      ["Details", `More details about product ${productId}`],
+      ["Specifications", `Specifications for product ${productId}`],
+    ]),
+    price: 19.99 + Number(productId),
+    images: [
+      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800",
+      "https://images.unsplash.com/photo-1752771433743-47a49376fb63?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1752867942884-e58115c2cc52?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    ],
   };
 
   return (
-    <Container className={styles.catalog} maxW="container.xl" py={28}>
-      <Card as={Box} size="sm" overflow="hidden" boxShadow="lg" borderRadius="lg" direction={{ base: "column", md: "row" }}>
-          <CardBody
-          display="flex"
-          >
-            <Image
-              src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-              alt="Green double couch with wooden legs"
-              maxW={{ base: "100%", md: "60%", xl: "75%" }}
+    <Container maxW="container.xl" py={40}>
+      <Stack>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
+          {/* Left: Carousel */}
+          <Box>
+            <ImageCarousel
+              images={product.images}
+              height={{ base: "250px", md: "400px" }}
             />
-          </CardBody>
-          
-          <Divider orientation="vertical" />
-          <CardFooter
-          display="flex"
-        textAlign={{ base: "center", md: "left" }}>
-            <Stack spacing={2} textAlign="center">
-              <Heading size="md">{product.name}</Heading>
-              <Text>
-                {product.description || " Acest produs nu are descriere."}
-              </Text>
-              <Text color="blue.600" fontSize="2xl">
-                {product.price}
-              </Text>
-            </Stack>
-          </CardFooter>
-      </Card>
+          </Box>
+
+          {/* Right: Details */}
+          <Stack spacing={4} textAlign={{ base: "center", md: "left" }}>
+            <Heading>{product.name}</Heading>
+            <Text fontSize="xl" color="blue.600">
+              ${product.price.toFixed(2)}
+            </Text>
+            <Divider borderColor="gray.500" />
+            <ClotheSizeSelector />
+            <Divider borderColor="gray.500" />
+            <Text lineHeight="tall">
+              {product.description.get("Overview") ||
+                "No description available."}
+            </Text>
+            {/* add more specs, links, buttons, etc. */}
+          </Stack>
+        </SimpleGrid>
+        <Divider py={4} borderColor="gray.500" />
+        <ProductDescription description={product.description} />
+      </Stack>
     </Container>
   );
 }

@@ -14,7 +14,7 @@ export default function Home() {
           Descoperiți cele mai noi produse și oferte exclusive.
         </Text>
         <Image
-          src="/images/welcome.jpg"
+          src="/pictures/welcome-image.jpg"
           alt="Welcome Image"
           width={600}
           height={400}

@@ -51,7 +51,7 @@ export default function ProductCard(product: Product) {
           <Stack mt="6" spacing="2">
             <Heading size="md">{product.name}</Heading>
             <Text>
-              {product.description || " Acest produs nu are descriere."}
+              {product.description.get("Overview") || " Acest produs nu are descriere."}
             </Text>
             <Text color="blue.600" fontSize="2xl">
               ${product.price.toFixed(2)}
