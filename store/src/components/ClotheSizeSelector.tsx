@@ -1,9 +1,13 @@
 'use client'
-import { Box, useRadio } from "@chakra-ui/react"
+import { Box, useRadio, UseRadioProps } from "@chakra-ui/react"
 import { useRadioGroup, HStack } from "@chakra-ui/react"
 import React from "react"
 
-function RadioCard(props) {
+interface RadioCardProps extends UseRadioProps {
+  children: React.ReactNode
+}
+
+function RadioCard(props: RadioCardProps) {
   const { getInputProps, getRadioProps } = useRadio(props)
 
   const input = getInputProps()

@@ -7,17 +7,16 @@ import {
   Divider,
   Heading,
   Box,
-  HStack,
 } from "@chakra-ui/react";
 import ImageCarousel from "@/components/ImageCarousel";
 import ProductDescription from "@/components/ProductDescription";
 import ClotheSizeSelector from "@/components/ClotheSizeSelector";
+ 
+type Props = {
+  params: Promise<{ productId: string }>
+}
 
-export default async function ProductPage({
-  params,
-}: {
-  params: { productId: string };
-}) {
+export default async function ProductPage({ params }: Props) {
   const { productId } = await params;
   // fetch your real product here…
   const product: Product & { images: string[] } = {
@@ -28,7 +27,7 @@ export default async function ProductPage({
       ["Details", `More details about product ${productId}`],
       ["Specifications", `Specifications for product ${productId}`],
     ]),
-    price: 19.99 + Number(productId),
+    price: 19.99,
     images: [
       "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800",
       "https://images.unsplash.com/photo-1752771433743-47a49376fb63?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
