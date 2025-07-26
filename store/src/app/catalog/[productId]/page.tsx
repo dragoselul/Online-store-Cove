@@ -12,12 +12,12 @@ import ImageCarousel from "@/components/ImageCarousel";
 import ProductDescription from "@/components/ProductDescription";
 import ClotheSizeSelector from "@/components/ClotheSizeSelector";
 
-export default async function ProductPage({
+export default function ProductPage({
   params,
 }: {
   params: { productId: string };
 }) {
-  const { productId } = await params;
+  const { productId } = params;
   // fetch your real product here…
   const product: Product & { images: string[] } = {
     id: Number(productId),
