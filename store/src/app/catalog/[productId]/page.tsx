@@ -13,7 +13,7 @@ import ProductDescription from "@/components/ProductDescription";
 import ClotheSizeSelector from "@/components/ClotheSizeSelector";
  
 type Props = {
-  params: Promise<{ productId: number }>
+  params: Promise<{ productId: string }>
 }
 
 export default async function ProductPage({ params }: Props) {

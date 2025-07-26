@@ -1,4 +1,4 @@
-import { Container, SimpleGrid, } from "@chakra-ui/react";
+import { Container, SimpleGrid } from "@chakra-ui/react";
 import styles from "../page.module.css";
 import ProductCard from "@/components/ProductCard";
 import { Product } from "@/model/product";
