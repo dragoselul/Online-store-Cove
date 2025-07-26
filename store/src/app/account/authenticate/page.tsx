@@ -1,9 +1,8 @@
-import SignupForm from "@/components/AuthenticationForm";
+import AuthenticationForm from "@/components/AuthenticationForm";
 import {
   Container,
   Card,
   CardBody,
-  CardHeader,
   Stack,
   Divider,
   Heading,
@@ -18,13 +17,13 @@ export default function Authenticate() {
           <Stack direction={{ base: "column", md: "row" }} spacing={20} justify="center">
             <Box>
               <Heading textAlign={"center"} py={4} fontSize={30}>Creaza un cont!</Heading>
-            <SignupForm isSignup={true} />
+            <AuthenticationForm isSignup={true} />
             </Box>
             <Divider borderColor="gray.500" display={{base:"block" , md: "none"}}/>
             <Divider borderColor="gray.500" display={{base:"none" , md: "block"}} orientation="vertical"/>
             <Box>
               <Heading textAlign={"center"} py={4} fontSize={30}>Logheaza-te!</Heading>
-            <SignupForm isSignup={false} />
+            <AuthenticationForm isSignup={false} />
             </Box>
           </Stack>
         </CardBody>

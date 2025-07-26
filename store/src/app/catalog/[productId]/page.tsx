@@ -7,7 +7,6 @@ import {
   Divider,
   Heading,
   Box,
-  HStack,
 } from "@chakra-ui/react";
 import ImageCarousel from "@/components/ImageCarousel";
 import ProductDescription from "@/components/ProductDescription";

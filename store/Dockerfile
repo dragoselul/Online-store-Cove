@@ -1,5 +1,5 @@
 # 1. Build
-FROM node:18-alpine AS builder
+FROM node:22-alpine AS builder
 WORKDIR /app
 
 COPY package.json package-lock.json* ./
@@ -10,7 +10,7 @@ COPY . .
 RUN npx next build
 
 # 2. Runtime
-FROM node:18-alpine AS runner
+FROM node:22-alpine AS runner
 WORKDIR /app
 
 # Copy only production files
