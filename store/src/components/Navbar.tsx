@@ -61,7 +61,7 @@ export default function Navbar() {
           <Image
           src="/pictures/logo.png"
           alt="Site logo"
-          width={60}
+          width={100}
           height={13}
           priority
         />

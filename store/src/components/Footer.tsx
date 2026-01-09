@@ -84,16 +84,16 @@ export default function Footer() {
           mt={{ base: 4, md: 0 }}
         >
           <Text as="b">Detalii de contact</Text>
-          <Link href="https://twitter.com/yourhandle" isExternal>
+          <Link href="tel:+40123456789" isExternal>
             <Stack direction="row" align="center">
               <Icon as={FaPhone} boxSize={5} />
               <Text>+40 123 456 789</Text>
             </Stack>
           </Link>
-          <Link href="https://github.com/yourhandle" isExternal>
+          <Link href="mailto:covestitiu@destept.ro" isExternal>
             <Stack direction="row" align="center">
               <Icon as={FaEnvelope} boxSize={5} />
-              <Text>covestitiu@prost.ro</Text>
+              <Text>covestitiu@destept.ro</Text>
             </Stack>
           </Link>
           <Link href="https://linkedin.com/in/yourprofile" isExternal>
