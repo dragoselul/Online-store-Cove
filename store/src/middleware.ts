@@ -1,40 +1,30 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { getToken } from 'next-auth/jwt'
 
-console.log('[middleware] loaded!')
+export async function middleware(req: NextRequest) {
+  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET })
+  
+  const isAuthPage = req.nextUrl.pathname.includes('/authenticate')
+  const isAccountPage = req.nextUrl.pathname.startsWith('/account')
 
-
-export function middleware(req: NextRequest) {
-  console.log('[middleware] hitting:', req.nextUrl.pathname)
-  const token = req.cookies.get('jwt')?.value
-  if (process.env.NODE_ENV !== 'production') {
-    console.log('[middleware] jwt token detected')
-  }
-
-  if (req.nextUrl.pathname.startsWith('/account')
-      && !req.nextUrl.pathname.includes('/authenticate')
-      && !token
-  ) {
-    console.log('[middleware] redirecting to /account/authenticate')
+  // Redirect unauthenticated users to login
+  if (isAccountPage && !isAuthPage && !token) {
     const url = req.nextUrl.clone()
     url.pathname = '/account/authenticate'
     return NextResponse.redirect(url)
   }
 
-  if(req.nextUrl.pathname.startsWith('/account')
-    && req.nextUrl.pathname.includes('/authenticate')
-    && token
-  )
-  {
-    console.log('[middleware] redirecting to /account')
+  // Redirect authenticated users away from auth page
+  if (isAuthPage && token) {
     const url = req.nextUrl.clone()
     url.pathname = '/account'
     return NextResponse.redirect(url)
   }
+
   return NextResponse.next()
 }
 
 export const config = {
-  // runtime: 'nodejs',
   matcher: ['/account/:path*'],
 }
